@@ -1,37 +1,28 @@
-# 🧪 High-Entropy Alloy Li-S Battery Catalyst Screening (Powered by CHGNet)
+🧪 Alloy Li-S Battery Catalyst Screening (Powered by CHGNet)
 
-[![Python](https://img.shields.io/badge/Python-3.8%2B-blue)](https://www.python.org/)
-[![CHGNet](https://img.shields.io/badge/Model-CHGNet_0.3.0-green)](https://github.com/CederGroupHub/chgnet)
-[![License](https://img.shields.io/badge/License-MIT-yellow)](LICENSE)
+📖 项目简介 (Introduction)
 
-## 📖 项目简介 (Introduction)
+本项目利用通用图神经网络势函数 CHGNet，快速计算并筛选适用于锂硫电池（Li-S Batteries）的催化剂材料。
 
-本项目利用通用图神经网络势函数 **CHGNet**，快速计算并筛选适用于锂硫电池（Li-S Batteries）的高熵合金（HEA）催化剂材料。
+🚀 核心功能 (Features)
 
-核心目标是对比 **硫化高熵合金 (FeCoNiCuMo-S)** 与 **氧化物对照样 (FeCoNiCuMo-O)** 对多硫化物 ($\text{Li}_2\text{S}_x$) 的吸附能力，以验证实验样抑制“穿梭效应”的潜力。
+创建表面模型: 基于 CIF 文件自动构建 表面模型。
+自动表面替换: 自动化脚本实现 S-基底与 O-基底的元素替换与构建。
+机器学习加速: 使用 CHGNet 替代昂贵的 DFT 计算，将计算时间从“数天”缩短至“数小时”。
 
-## 🚀 核心功能 (Features)
+📊 结果示例 (Results)
 
-* [cite_start]**高熵合金建模**: 基于 CIF 文件自动构建 FCC (111) 表面模型 [cite: 1]。
-* **自动表面改性**: 自动化脚本实现 S-基底与 O-基底的元素替换与构建。
-* **机器学习加速**: 使用 CHGNet 替代昂贵的 DFT 计算，将计算时间从“数天”缩短至“数分钟”。
-* **全流程自动化**: 包含结构优化 (Relaxation)、能量计算、吸附能分析及图表绘制。
+正在读取结构文件: ******.cif ...
+切面完成。切面公式: ******
+正在加载 CHGNet (首次运行需下载)...
+CHGNet v0.3.0 initialized with 412,525 parameters
+CHGNet will run on cpu
+------------------------------------------------------------
+分子       | 表面(基底)       | 状态                  
+------------------------------------------------------------
+Li2S      |                 | 完成 (Eads=-10.0 eV)  
+Li2S2     |                 | 完成 (Eads=-6.0 eV)  
+······
 
-## 📊 结果示例 (Results)
-
-*下图展示了 FeCoNiCuMo-S 表面相比于氧化物表面对 Li2S4 表现出更强的化学吸附作用。*
-
-![Adsorption Energy Comparison](results/energy_comparison.png)
-*(注：建议您运行代码后，把生成的图片上传到仓库，并替换这里的链接)*
-
-| 分子 (Molecule) | 表面 (Surface) | 吸附能 (eV) | 结论 |
-| :--- | :--- | :--- | :--- |
-| Li2S4 | FeCoNiCuMo-S | **-3.12** | Stronger |
-| Li2S4 | FeCoNiCuMo-O | -2.05 | Weaker |
-
-## 🛠️ 安装与使用 (Installation & Usage)
-
-### 1. 环境依赖
+🛠️ 安装与使用 (Installation & Usage)
 建议使用 Google Colab 或本地 Python 环境。
-```bash
-pip install chgnet pymatgen ase pandas matplotlib
